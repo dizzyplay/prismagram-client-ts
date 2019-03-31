@@ -7,6 +7,7 @@
     "@types/node": "^11.12.2",
     "@types/react": "^16.8.10",
     "@types/react-dom": "^16.8.3",
+    "@types/react-router-dom": "^4.3.1",
     "@types/styled-components": "^4.1.12",
     "apollo-boost": "^0.3.1",
     "react": "^16.8.6",
@@ -26,7 +27,7 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": ""
   },
   "browserslist": [
     ">0.2%",
