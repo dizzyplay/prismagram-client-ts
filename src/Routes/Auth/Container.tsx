@@ -16,14 +16,6 @@ export default () => {
   const email = useFormInput("");
   const username = useFormInput("");
   const createAccount = useMutation(CREATE_ACCOUT, {
-    update: (_, result) => {
-      const res: boolean = result.data.createAccount;
-      if (res) {
-        toast("회원가입이 완료되었습니다.");
-      } else {
-        toast.error("문제발생!!!");
-      }
-    },
     variables: {
       email: email.value,
       username: username.value,
@@ -32,11 +24,6 @@ export default () => {
     }
   });
   const requestSecret = useMutation(LOG_IN, {
-    update: (_, result) => {
-      if (!result.data.requestSecret) {
-        toast.error("해당 이메일의 사용자가 존재하지 않습니다.");
-      } else toast("해당 이메일로 비밀키가 발송되었습니다.");
-    },
     variables: { email: email.value }
   });
 
@@ -45,7 +32,10 @@ export default () => {
     if (action === "logIn") {
       if (email.value !== "") {
         try {
-          await requestSecret();
+          const { data } = await requestSecret();
+          if (!data.requestSecret)
+            toast.error("해당 이메일의 사용자가 존재하지 않습니다.");
+          else toast("해당 이메일로 비밀키가 발송되었습니다.");
         } catch {
           toast.error("cant' request"); //서버 에러 처리시 처리
         }
@@ -59,7 +49,13 @@ export default () => {
         firstName.value !== "" &&
         lastName.value !== ""
       ) {
-        createAccount();
+        try {
+          const { data } = await createAccount();
+          if (data.createAccount) toast("회원가입이 완료되었습니다.");
+          else toast.error("정보가 잘못되었습니다.");
+        } catch (e) {
+          toast.error(e.message.split(":")[1]);
+        }
       } else {
         toast.error("필드를 입력해주세요");
       }
