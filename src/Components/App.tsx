@@ -14,7 +14,7 @@ const Query = gql`
 
 const App = ()=>{
   const {data}= useQuery(Query);
-  const isLoggedIn = data.isLoggedIn
+  const isLoggedIn = data.isLoggedIn;
 
     return (
       <ThemeProvider theme={Theme}>
