@@ -40,11 +40,15 @@ export default () => {
     variables: { email: email.value }
   });
 
-  const onSubmit = (e: Event) => {
+  const onSubmit = async (e: Event) => {
     e.preventDefault();
     if (action === "logIn") {
       if (email.value !== "") {
-        requestSecret();
+        try {
+          await requestSecret();
+        } catch {
+          toast.error("cant' request"); //서버 에러 처리시 처리
+        }
       } else {
         toast.error("이메일을 입력해주세요");
       }
