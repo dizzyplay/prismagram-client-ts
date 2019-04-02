@@ -1,6 +1,6 @@
 import * as React from "react"
 
-const Profile: React.FunctionComponent = () => {
+const Profile  = () => {
   return (
     <div>
           profile

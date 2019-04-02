@@ -1,6 +1,6 @@
 import * as React from "react"
 
-const EditProfile: React.FunctionComponent = () => {
+const EditProfile = () => {
   return (
     <div>
 editprofile

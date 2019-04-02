@@ -1,7 +1,6 @@
 import * as React from "react";
 import { ReactElement, useState } from "react";
 import styled from "styled-components";
-import { MyTheme } from "../Styles/Theme";
 import Input from "../Components/Input";
 import Button from "../Components/Button";
 
@@ -13,7 +12,7 @@ const Wrapper = styled.div`
   flex-direction:column;
 `;
 const Box = styled.div`
-  ${(props: MyTheme) => props.theme.whiteBox}
+  ${(props) => props.theme.whiteBox}
   border-radius:0px;
   width: 100%;
   max-width: 350px;

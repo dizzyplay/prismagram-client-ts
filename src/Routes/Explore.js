@@ -1,6 +1,6 @@
 import * as React from "react"
 
-const Explore: React.FunctionComponent = () => {
+const Explore = () => {
   return (
     <div>
 explore

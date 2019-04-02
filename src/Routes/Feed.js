@@ -1,6 +1,6 @@
 import * as React from "react"
 
-const Feed: React.FunctionComponent = () => {
+const Feed = () => {
   return (
     <div>
 feed

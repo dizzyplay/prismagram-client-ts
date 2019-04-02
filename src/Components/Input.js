@@ -11,7 +11,7 @@ const Container = styled.input`
   padding: 0px 15px;
 `;
 
-const Input = ({ placeholder }) => <Container placeholder={placeholder} />;
+const Input = ({ placeholder, required=true }) => <Container placeholder={placeholder} required={required} />;
 
 
 export default Input;
