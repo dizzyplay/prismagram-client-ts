@@ -1,9 +1,6 @@
-import * as React from "react"
+import * as React from "react";
 
-const Profile  = () => {
-  return (
-    <div>
-          profile
-    </div>)
+const Profile = () => {
+  return <div>profile</div>;
 };
-export default Profile
+export default Profile;

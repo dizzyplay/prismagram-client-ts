@@ -1,9 +1,6 @@
-import * as React from "react"
+import * as React from "react";
 
 const Feed = () => {
-  return (
-    <div>
-feed
-    </div>)
+  return <div>feed</div>;
 };
-export default Feed
+export default Feed;

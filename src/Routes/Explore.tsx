@@ -1,9 +1,6 @@
-import * as React from "react"
+import * as React from "react";
 
 const Explore = () => {
-  return (
-    <div>
-explore
-    </div>)
+  return <div>explore</div>;
 };
-export default Explore
+export default Explore;

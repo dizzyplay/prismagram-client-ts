@@ -1,9 +1,6 @@
-import * as React from "react"
+import * as React from "react";
 
 const Post = () => {
-  return (
-    <div>
-  post
-    </div>)
+  return <div>post</div>;
 };
-export default Post
+export default Post;
