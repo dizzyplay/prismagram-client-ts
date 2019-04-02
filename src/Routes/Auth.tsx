@@ -1,18 +1,20 @@
 import * as React from "react";
 import { ReactElement, useState } from "react";
+// @ts-ignore
 import styled from "styled-components";
 import Input from "../Components/Input";
 import Button from "../Components/Button";
+import { mytheme } from "../Styles/Theme";
 
 const Wrapper = styled.div`
   min-height: 80vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction:column;
+  flex-direction: column;
 `;
 const Box = styled.div`
-  ${(props) => props.theme.whiteBox}
+  ${(props: mytheme) => props.theme.whiteBox}
   border-radius:0px;
   width: 100%;
   max-width: 350px;
@@ -23,7 +25,7 @@ const StateChanger = styled(Box)`
   padding: 20px 0px;
 `;
 const Link = styled.span`
-  color: ${props => props.theme.blueColor};
+  color: ${(props: mytheme) => props.theme.blueColor};
   cursor: pointer;
 `;
 
@@ -51,8 +53,8 @@ const Auth = (): ReactElement => {
       <Form>
         {action === "logIn" ? (
           <form>
-            <Input placeholder={"Username"} />
-            <Input placeholder={"Password"} />
+            <Input placeholder={"Username"} required={true} />
+            <Input placeholder={"Password"} required={true} />
             <Button text={"Log in"} />
           </form>
         ) : (

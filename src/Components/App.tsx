@@ -1,5 +1,6 @@
-import React  from 'react';
+import * as React  from 'react';
 import GlobalStyle from "../Styles/GlobalStyles"
+// @ts-ignore
 import {ThemeProvider} from "styled-components";
 import Theme from "../Styles/Theme"
 import Router from "./Router";
