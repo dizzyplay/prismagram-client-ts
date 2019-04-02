@@ -5,6 +5,7 @@ import Theme from "../Styles/Theme"
 import Router from "./Router";
 import {gql} from "apollo-boost"
 import {useQuery} from "react-apollo-hooks";
+import Footer from "./Footer"
 
 const Query = gql`
     {
@@ -21,6 +22,7 @@ const App = ()=>{
         <>
           <GlobalStyle/>
           <Router isLoggedIn={isLoggedIn}/>
+          <Footer/>
         </>
       </ThemeProvider>
     );
