@@ -1,6 +1,12 @@
 const BOX_BORDER = "1px solid #e6e6e6";
 const BORDER_RADIUS = "4px";
 
+export interface mytheme {
+  theme:{
+    [key:string]:string
+  }
+}
+
 export default {
   maxWidth: "935px",
   bgColor: "#FAFAFA",

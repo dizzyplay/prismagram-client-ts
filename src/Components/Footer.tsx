@@ -1,5 +1,7 @@
-import React from "react";
+import * as React from "react";
+// @ts-ignore
 import styled from "styled-components";
+import { mytheme } from "../Styles/Theme";
 
 const Footer = styled.footer`
   display: flex;
@@ -21,11 +23,11 @@ const ListItem = styled.li`
 `;
 
 const Link = styled.a`
-  color: ${props => props.theme.darkBlueColor};
+  color: ${(props: mytheme) => props.theme.darkBlueColor};
 `;
 
 const Copyright = styled.span`
-  color: ${props => props.theme.darkGreyColor};
+  color: ${(props: mytheme) => props.theme.darkGreyColor};
 `;
 
 export default () => (
