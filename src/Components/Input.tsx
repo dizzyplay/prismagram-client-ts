@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 // @ts-ignore
 import styled from "styled-components";
 import { mytheme } from "../Styles/Theme";
@@ -13,14 +13,30 @@ const Container = styled.input`
   padding: 0px 15px;
 `;
 
-const Input: ({
-  placeholder,
-  required
-}: {
+interface Input {
   placeholder: string;
+  value: string;
+  type?: string;
   required?: boolean;
-}) => any = ({ placeholder, required = true }) => (
-  <Container placeholder={placeholder} required={required} />
-);
+  onChange: (e: { target: HTMLInputElement }) => any;
+}
+
+function Input({
+  placeholder,
+  required = true,
+  onChange,
+  value,
+  type = "text"
+}: Input) {
+  return (
+    <Container
+      placeholder={placeholder}
+      required={required}
+      onChange={onChange}
+      value={value}
+      type={type}
+    />
+  );
+}
 
 export default Input;

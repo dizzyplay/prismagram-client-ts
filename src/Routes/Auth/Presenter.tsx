@@ -1,10 +1,9 @@
-import * as React from "react";
-import { ReactElement, useState } from "react";
+import React from "react";
+import Input from "../../Components/Input";
+import Button from "../../Components/Button";
+import { mytheme } from "../../Styles/Theme";
 // @ts-ignore
 import styled from "styled-components";
-import Input from "../Components/Input";
-import Button from "../Components/Button";
-import { mytheme } from "../Styles/Theme";
 
 const Wrapper = styled.div`
   min-height: 80vh;
@@ -46,24 +45,40 @@ const Form = styled(Box)`
     }
   }
 `;
-const Auth = (): ReactElement => {
-  const [action, setAction] = useState("logIn");
+interface presenterObj {
+  [key: string]: any;
+}
+export default ({
+  name,
+  loginPassword,
+  signupPassword,
+  firstName,
+  lastName,
+  email,
+  username,
+  action,
+  setAction,
+  onSubmit
+}: presenterObj) => {
   return (
     <Wrapper>
       <Form>
         {action === "logIn" ? (
-          <form>
-            <Input placeholder={"Username"} required={true} />
-            <Input placeholder={"Password"} required={true} />
+          <form onSubmit={onSubmit}>
+            <Input placeholder={"email"} {...email} type={"email"} />
             <Button text={"Log in"} />
           </form>
         ) : (
-          <form>
-            <Input placeholder={"First name"} />
-            <Input placeholder={"Last name"} />
-            <Input placeholder={"Email"} />
-            <Input placeholder={"Username"} />
-            <Input placeholder={"Password"} />
+          <form onSubmit={onSubmit}>
+            <Input placeholder={"First name"} {...firstName} />
+            <Input placeholder={"Last name"} {...lastName} />
+            <Input placeholder={"Email"} {...email} />
+            <Input placeholder={"Username"} {...username} />
+            <Input
+              placeholder={"Password"}
+              {...signupPassword}
+              type={"password"}
+            />
             <Button text={"Sign up"} />
           </form>
         )}
@@ -84,5 +99,3 @@ const Auth = (): ReactElement => {
     </Wrapper>
   );
 };
-
-export default Auth;
