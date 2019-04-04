@@ -21,3 +21,12 @@ export const CREATE_ACCOUT = gql`
       )
     }
 `;
+
+export const CONFIRM_SECRET = gql`
+    mutation confirmSecret($secretKey:String!, $email:String!){
+        confirmSecret(
+            secret:$secretKey,
+            email:$email
+        )
+    }
+  `;

@@ -58,17 +58,19 @@ export default ({
   username,
   action,
   setAction,
-  onSubmit
+  onSubmit,
+  secret
 }: presenterObj) => {
   return (
     <Wrapper>
       <Form>
-        {action === "logIn" ? (
+        {action === "logIn" && (
           <form onSubmit={onSubmit}>
-            <Input placeholder={"email"} {...email} type={"email"} />
+            <Input placeholder={"Email"} {...email} type={"email"} />
             <Button text={"Log in"} />
           </form>
-        ) : (
+        )}
+        {action === "signUp" && (
           <form onSubmit={onSubmit}>
             <Input placeholder={"First name"} {...firstName} />
             <Input placeholder={"Last name"} {...lastName} />
@@ -80,6 +82,13 @@ export default ({
               type={"password"}
             />
             <Button text={"Sign up"} />
+          </form>
+        )}
+        {action === "secret" && (
+          <form onSubmit={onSubmit}>
+            <Input placeholder={"Email"} {...email} />
+            <Input placeholder={"비밀키"} {...secret} />
+            <Button text={"비밀키를 입력해주세요"} />
           </form>
         )}
       </Form>
