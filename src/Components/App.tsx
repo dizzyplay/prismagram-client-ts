@@ -3,13 +3,15 @@ import GlobalStyle from "../Styles/GlobalStyles";
 // @ts-ignore
 import styled, { ThemeProvider } from "styled-components";
 import Theme from "../Styles/Theme";
-import Router from "./Router";
+import Routes from "./Routes";
 import { gql } from "apollo-boost";
 import { useQuery } from "react-apollo-hooks";
 import Footer from "./Footer";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Header from "./Header";
+import { HashRouter } from "react-router-dom";
 
 const Query = gql`
   {
@@ -31,8 +33,14 @@ const App = () => {
     <ThemeProvider theme={Theme}>
       <Wrapper>
         <GlobalStyle />
-        <Router isLoggedIn={isLoggedIn} />
-        <Footer />
+        <HashRouter>
+          <>
+            <Wrapper>
+              <Routes isLoggedIn={isLoggedIn} />
+              <Footer />
+            </Wrapper>
+          </>
+        </HashRouter>
         <ToastContainer position={toast.POSITION.TOP_CENTER} />
       </Wrapper>
     </ThemeProvider>

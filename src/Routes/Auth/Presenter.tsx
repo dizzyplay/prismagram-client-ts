@@ -4,6 +4,7 @@ import Button from "../../Components/Button";
 import { mytheme } from "../../Styles/Theme";
 // @ts-ignore
 import styled from "styled-components";
+import Loader from "../../Components/Loader";
 
 const Wrapper = styled.div`
   min-height: 80vh;
@@ -11,6 +12,12 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+`;
+
+const Center = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 const Box = styled.div`
   ${(props: mytheme) => props.theme.whiteBox}
@@ -64,6 +71,11 @@ export default ({
   return (
     <Wrapper>
       <Form>
+        {action === "loading" && (
+          <Center>
+            <Loader />
+          </Center>
+        )}
         {action === "logIn" && (
           <form onSubmit={onSubmit}>
             <Input placeholder={"Email"} {...email} type={"email"} />
