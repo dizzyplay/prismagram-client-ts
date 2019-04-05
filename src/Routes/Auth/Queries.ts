@@ -30,3 +30,8 @@ export const CONFIRM_SECRET = gql`
         )
     }
   `;
+
+export const LOCAL_LOGIN = gql`
+  mutation userLogin($token:String!){
+      userLogin(token:$token) @client
+  }`;

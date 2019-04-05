@@ -3,7 +3,7 @@ import Presenter from "./Presenter";
 import { useState } from "react";
 import { useFormInput } from "../../Hooks/form";
 import { useMutation } from "react-apollo-hooks";
-import { CONFIRM_SECRET, CREATE_ACCOUT, LOG_IN } from "./Queries";
+import { CONFIRM_SECRET, CREATE_ACCOUT, LOCAL_LOGIN, LOG_IN } from "./Queries";
 import { toast } from "react-toastify";
 import { errorMessage } from "../../utils";
 
@@ -36,6 +36,8 @@ export default () => {
   const requestSecret = useMutation(LOG_IN, {
     variables: { email: email.value }
   });
+
+  const localLoginMutation = useMutation(LOCAL_LOGIN);
 
   const onSubmit = async (e: Event) => {
     e.preventDefault();
@@ -76,7 +78,11 @@ export default () => {
       try {
         const { data } = await confirmSecretMutation();
         const token: string = data.confirmSecret;
-        alert(token);
+        if (token !== "" && token !== undefined) {
+          await localLoginMutation({ variables: { token } });
+        } else {
+          throw Error();
+        }
       } catch (e) {
         toast.error(errorMessage(e.message));
       }

@@ -9,7 +9,7 @@ export const defaults: defaultsType = {
 
 export const resolvers: Resolvers = {
   Mutation: {
-    loginUser: (_, { token }, { cache }) => {
+    userLogin: (_, { token }, { cache }) => {
       localStorage.setItem("token", token);
       cache.writeData({
         data: {
@@ -18,7 +18,7 @@ export const resolvers: Resolvers = {
       });
       return null;
     },
-    logoutUser: (_, __, { cache }) => {
+    userLogout: (_, __, { cache }) => {
       localStorage.removeItem("token");
       window.location.reload();
       return null;
