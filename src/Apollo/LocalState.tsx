@@ -16,11 +16,12 @@ export const resolvers: Resolvers = {
           isLoggedIn: true
         }
       });
+      window.location.reload();
       return null;
     },
     userLogout: (_, __, { cache }) => {
       localStorage.removeItem("token");
-      window.location.reload();
+      window.location.href = "/";
       return null;
     }
   }

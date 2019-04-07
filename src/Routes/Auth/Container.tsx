@@ -6,7 +6,6 @@ import { useMutation } from "react-apollo-hooks";
 import { CONFIRM_SECRET, CREATE_ACCOUNT, LOCAL_LOGIN, LOG_IN } from "./Queries";
 import { toast } from "react-toastify";
 import { errorMessage } from "../../utils";
-import Loader from "../../Components/Loader";
 
 export default () => {
   const [action, setAction] = useState("logIn");

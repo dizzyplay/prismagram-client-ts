@@ -3,8 +3,10 @@ const BORDER_RADIUS = "4px";
 
 export interface mytheme {
   theme: {
-    [key: string]: string;
+    [key: string]: any;
   };
+  showing: boolean;
+  src: string;
 }
 
 export default {

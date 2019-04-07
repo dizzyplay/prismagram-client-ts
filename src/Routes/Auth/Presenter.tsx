@@ -5,6 +5,7 @@ import { mytheme } from "../../Styles/Theme";
 // @ts-ignore
 import styled from "styled-components";
 import Loader from "../../Components/Loader";
+import Helmet from "react-helmet";
 
 const Wrapper = styled.div`
   min-height: 80vh;
@@ -77,31 +78,46 @@ export default ({
           </Center>
         )}
         {action === "logIn" && (
-          <form onSubmit={onSubmit}>
-            <Input placeholder={"Email"} {...email} type={"email"} />
-            <Button text={"Log in"} />
-          </form>
+          <>
+            <Helmet>
+              <title>Login | prismagram</title>
+            </Helmet>
+            <form onSubmit={onSubmit}>
+              <Input placeholder={"Email"} {...email} type={"email"} />
+              <Button text={"Log in"} />
+            </form>
+          </>
         )}
         {action === "signUp" && (
-          <form onSubmit={onSubmit}>
-            <Input placeholder={"First name"} {...firstName} />
-            <Input placeholder={"Last name"} {...lastName} />
-            <Input placeholder={"Email"} {...email} />
-            <Input placeholder={"Username"} {...username} />
-            <Input
-              placeholder={"Password"}
-              {...signupPassword}
-              type={"password"}
-            />
-            <Button text={"Sign up"} />
-          </form>
+          <>
+            <Helmet>
+              <title>회원가입 | prismagram</title>
+            </Helmet>
+            <form onSubmit={onSubmit}>
+              <Input placeholder={"First name"} {...firstName} />
+              <Input placeholder={"Last name"} {...lastName} />
+              <Input placeholder={"Email"} {...email} />
+              <Input placeholder={"Username"} {...username} />
+              <Input
+                placeholder={"Password"}
+                {...signupPassword}
+                type={"password"}
+              />
+              <Button text={"Sign up"} />
+            </form>
+          </>
         )}
         {action === "secret" && (
-          <form onSubmit={onSubmit}>
-            <Input placeholder={"Email"} {...email} />
-            <Input placeholder={"비밀키"} {...secret} />
-            <Button text={"비밀키를 입력해주세요"} />
-          </form>
+          <>
+            <Helmet>
+              <title> confirm Secret | prismagram</title>
+            </Helmet>
+            <form onSubmit={onSubmit}>
+              <Input placeholder={"Email"} {...email} />
+              <Input placeholder={"비밀키"} {...secret} />
+              <Button text={"비밀키를 입력해주세요"} />
+            </form>
+          </>
         )}
       </Form>
       <StateChanger>
