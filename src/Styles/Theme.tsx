@@ -7,6 +7,7 @@ export interface mytheme {
   };
   showing: boolean;
   src: string;
+  [key: string]: any;
 }
 
 export default {

@@ -38,7 +38,7 @@ const Files = styled.div`
 `;
 const Textarea = styled(TextareaAutosize)`
   border: none;
-  width: 100%;
+  width: 90%;
   resize: none;
   font-size: 14px;
   &:focus {
@@ -46,6 +46,26 @@ const Textarea = styled(TextareaAutosize)`
   }
 `;
 
+const CommentWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+const CommentButton = styled.div`
+  cursor: pointer;
+  color: ${(props: mytheme) =>
+    props.enabled ? props.theme.blueColor : props.theme.darkGreyColor}};
+`;
+
+const CommentBox = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const CommentSpan = styled.span`
+  padding: 6px;
+`;
 const Header = styled.header`
   padding: 15px;
   display: flex;
@@ -91,12 +111,14 @@ export default ({
   files,
   location,
   likesCount,
+  caption,
   isLiked,
   comments,
   newComment,
   createdAt,
   currentItem,
-  toggleLike
+  toggleLike,
+  onKeyPress
 }: PostType) => (
   <Post>
     <Header>
@@ -123,8 +145,31 @@ export default ({
         </Button>
       </Buttons>
       <FatText text={likesCount === 1 ? "1 like" : `${likesCount} likes`} />
+      <CommentBox>
+        <CommentSpan>
+          <FatText text={user.username} /> {caption}
+        </CommentSpan>
+        {comments.map((comment, idx) => (
+          <CommentSpan key={idx}>
+            <FatText text={comment.user.username} /> {comment.text}
+          </CommentSpan>
+        ))}
+      </CommentBox>
       <Timestamp>{createdAt}</Timestamp>
-      <Textarea placeholder={"Add a comment..."} {...newComment} />
+      <CommentWrapper>
+        <Textarea
+          placeholder={"Add a comment..."}
+          onChange={newComment.onChange}
+          value={newComment.value}
+          onKeyPress={onKeyPress}
+        />
+        <CommentButton
+          enabled={newComment.value.length > 0}
+          onClick={onKeyPress}
+        >
+          게시
+        </CommentButton>
+      </CommentWrapper>
     </Meta>
   </Post>
 );

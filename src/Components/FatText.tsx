@@ -4,8 +4,11 @@ import styled from "styled-components";
 
 const Text = styled.span`
   font-weight: 600;
+  user-select: none;
 `;
 
-const FatText = ({ text }: { text: string }) => <Text>{text}</Text>;
+const FatText = ({ text, className }: any) => (
+  <Text className={className}>{text}</Text>
+);
 
 export default FatText;

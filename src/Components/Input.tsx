@@ -19,6 +19,7 @@ interface Input {
   type?: string;
   required?: boolean;
   onChange: (e: { target: HTMLInputElement }) => any;
+  className: any;
 }
 
 function Input({
@@ -26,10 +27,12 @@ function Input({
   required = true,
   onChange,
   value,
-  type = "text"
+  type = "text",
+  className
 }: Input) {
   return (
     <Container
+      className={className}
       placeholder={placeholder}
       required={required}
       onChange={onChange}

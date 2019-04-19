@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import Presenter from "./Presenter";
 import { useFormInput } from "../../Hooks/form";
 import { useMutation } from "react-apollo-hooks";
-import { TOGGLE_LIKE } from "./Queries";
+import { ADD_COMMENT, TOGGLE_LIKE } from "./Queries";
+import { toast } from "react-toastify";
 
 export interface PostType {
   id: string;
@@ -39,20 +40,42 @@ export default ({
   const [isLikedS, setIsLiked] = useState(isLiked);
   const [likeCountS, setLikeCount] = useState(likesCount);
   const [currentItem, setCurrentItem] = useState(0);
+  const [selfComments, setSelfComments] = useState(comments);
+  const comment = useFormInput("");
   const toggleLikeMutation = useMutation(TOGGLE_LIKE, {
     variables: {
       postId: id
     }
   });
-  const comment = useFormInput("");
-  const toggleLIke = () => {
-    toggleLikeMutation();
-    if (isLikedS === true) {
-      setIsLiked(false);
-      setLikeCount(likeCountS - 1);
-    } else {
-      setIsLiked(true);
-      setLikeCount(likeCountS + 1);
+  const addCommentMutation = useMutation(ADD_COMMENT, {
+    variables: { postId: id, text: comment.value }
+  });
+
+  const onKeyUp = async (e: any) => {
+    const { charCode } = e;
+    if (charCode === 13 || e.type === "click") {
+      e.preventDefault();
+      if (comment.value.length) {
+        const { data } = await addCommentMutation();
+        const newComment = data.addComment;
+        selfComments.push(newComment);
+        setSelfComments(selfComments);
+        comment.setValue("");
+      }
+    }
+  };
+  const toggleLIke = async () => {
+    try {
+      await toggleLikeMutation();
+      if (isLikedS) {
+        setIsLiked(false);
+        setLikeCount(likeCountS - 1);
+      } else {
+        setIsLiked(true);
+        setLikeCount(likeCountS + 1);
+      }
+    } catch (e) {
+      toast.error("Something is wrong");
     }
   };
   const slide = () => {
@@ -74,7 +97,7 @@ export default ({
       files={files}
       likesCount={likeCountS}
       isLiked={isLikedS}
-      comments={comments}
+      comments={selfComments}
       createdAt={createdAt}
       location={location}
       caption={caption}
@@ -83,6 +106,7 @@ export default ({
       newComment={comment}
       currentItem={currentItem}
       toggleLike={toggleLIke}
+      onKeyPress={onKeyUp}
     />
   );
 };
