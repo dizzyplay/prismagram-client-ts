@@ -57,9 +57,7 @@ export default ({
       e.preventDefault();
       if (comment.value.length) {
         const { data } = await addCommentMutation();
-        const newComment = data.addComment;
-        selfComments.push(newComment);
-        setSelfComments(selfComments);
+        setSelfComments([...selfComments, data.addComment]);
         comment.setValue("");
       }
     }
