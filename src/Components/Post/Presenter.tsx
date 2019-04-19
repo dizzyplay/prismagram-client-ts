@@ -8,6 +8,7 @@ import FatText from "../FatText";
 import { HeartEmpty, HeartFull, Comment } from "../Icons";
 import Helmet from "react-helmet";
 import { TextareaAutosize } from "react-autosize-textarea/lib/TextareaAutosize";
+import { dateParser } from "../../utils";
 
 const Post = styled.div`
   ${(props: mytheme) => props.theme.whiteBox};
@@ -135,7 +136,6 @@ export default ({
         ))}
     </Files>
     <Meta>
-      {" "}
       <Buttons>
         <Button onClick={toggleLike}>
           {isLiked ? <HeartFull /> : <HeartEmpty />}
@@ -155,7 +155,9 @@ export default ({
           </CommentSpan>
         ))}
       </CommentBox>
-      <Timestamp>{createdAt}</Timestamp>
+      <Timestamp>
+        <>{dateParser(createdAt)}</>
+      </Timestamp>
       <CommentWrapper>
         <Textarea
           placeholder={"Add a comment..."}
