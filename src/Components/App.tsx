@@ -20,6 +20,8 @@ const Query = gql`
 `;
 
 const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
   margin: 0 auto;
   max-width: 935px;
   width: 100%;

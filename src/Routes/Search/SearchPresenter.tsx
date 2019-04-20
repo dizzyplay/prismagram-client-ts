@@ -6,32 +6,30 @@ import { UserCard } from "../../Components/UserCard";
 import { SquarePost } from "../../Components/SquarePost";
 
 const Wrapper = styled.div`
-  height: 50vh;
-  text-align: center;
+  height: 100vh;
 `;
 
 const Section = styled.div`
   margin-bottom: 50px;
   display: grid;
   grid-gap: 25px;
-  grid-template-columns: repeat(4, 160px);
+  grid-template-columns: repeat(4, 1fr);
   grid-template-rows: 160px;
   grid-auto-rows: 160px;
 `;
+
 const PostSection = styled(Section)`
-  grid-template-columns: repeat(4, 200px);
+  grid-template-columns: repeat(4, 1fr);
   grid-template-rows: 200px;
   grid-auto-rows: 200px;
 `;
 
 type Props = {
-  searchTerm: string;
   loading: boolean;
   data: { searchPost: []; searchUser: [] };
 };
 
-export const SearchPresenter = ({ searchTerm, loading, data }: Props) => {
-  console.log(data);
+export const SearchPresenter = ({ loading, data }: Props) => {
   if (loading)
     return (
       <Wrapper>
@@ -42,18 +40,18 @@ export const SearchPresenter = ({ searchTerm, loading, data }: Props) => {
     return (
       <>
         <Wrapper>
-          {data.searchUser.map((user: any, idx: number) => (
-            <UserCard
-              key={idx}
-              id={user.id}
-              username={user.username}
-              url={user.avatar}
-              isSelf={user.isSelf}
-              isFollowing={user.isFollowing}
-            />
-          ))}
-        </Wrapper>
-        <Wrapper>
+          <Section>
+            {data.searchUser.map((user: any, idx: number) => (
+              <UserCard
+                key={idx}
+                id={user.id}
+                username={user.username}
+                url={user.avatar}
+                isSelf={user.isSelf}
+                isFollowing={user.isFollowing}
+              />
+            ))}
+          </Section>
           <PostSection>
             {data.searchPost.map((post: any, idx: number) => (
               <SquarePost

@@ -3,7 +3,7 @@ import Button from "../Button";
 import styled from "styled-components";
 
 const CLINK = styled.div`
-  width: 200px;
+  width: 100%;
 `;
 
 type Props = {

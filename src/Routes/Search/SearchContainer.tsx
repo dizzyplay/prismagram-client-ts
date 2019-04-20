@@ -16,7 +16,7 @@ const SearchContainer = ({ location: { search } }: Props) => {
     skip: term === "" || term === undefined,
     variables: { term }
   });
-  return <SearchPresenter searchTerm={term} loading={loading} data={data} />;
+  return <SearchPresenter loading={loading} data={data} />;
 };
 
 export default withRouter(SearchContainer);

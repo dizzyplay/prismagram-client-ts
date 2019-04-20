@@ -4,6 +4,7 @@ import Avatar from "./Avatar";
 import { Link } from "react-router-dom";
 import FatText from "./FatText";
 import FollowButton from "../Components/FollowButton";
+import { DefaultUser } from "./Icons";
 
 const Card = styled.div`
   ${props => props.theme.whiteBox}
@@ -32,7 +33,7 @@ type Props = {
 export function UserCard({ id, username, url, isSelf, isFollowing }: Props) {
   return (
     <Card>
-      <EAvatar size={"md"} url={url} />
+      {url ? <EAvatar size={"md"} url={url} /> : <DefaultUser />}
       <ELink to={`/${username}`}>
         <FatText text={username} />
       </ELink>
