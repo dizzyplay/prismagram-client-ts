@@ -76,16 +76,24 @@ export default ({
       toast.error("Something is wrong");
     }
   };
+  let timeId: any;
   const slide = () => {
     const totalFiles: number = files.length;
     if (currentItem === totalFiles - 1) {
-      setTimeout(() => setCurrentItem(0), 3000);
+      timeId = setTimeout(() => setCurrentItem(0), 3000);
     } else {
-      setTimeout(() => setCurrentItem(currentItem + 1), 3000);
+      timeId = setTimeout(() => setCurrentItem(currentItem + 1), 3000);
     }
+  };
+
+  const unSlide = () => {
+    clearTimeout(timeId);
   };
   useEffect(() => {
     slide();
+    return () => {
+      unSlide();
+    };
   }, [currentItem]);
 
   return (

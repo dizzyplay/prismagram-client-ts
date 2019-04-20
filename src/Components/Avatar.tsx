@@ -18,6 +18,7 @@ type SIZE = "sm" | "md" | "lg";
 interface AvatarType {
   size: SIZE;
   url: string;
+  className?: any;
 }
 
 const Container = styled.div`
@@ -27,8 +28,8 @@ const Container = styled.div`
   border-radius:50%;
   `;
 
-const Avatar = ({ size = "sm", url }: AvatarType) => (
-  <Container size={size} url={url} />
+const Avatar = ({ size = "sm", url, className }: AvatarType) => (
+  <Container className={className} size={size} url={url} />
 );
 
 export default Avatar;

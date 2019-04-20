@@ -13,9 +13,10 @@ const Container = styled.button`
   text-align: center;
   padding: 7px 0px;
   font-size: 14px;
+  outline: none;
 `;
 
-const Button: ({ text }: { text: string }) => any = ({ text }) => (
+const Button: ({ text }: any) => any = ({ text }) => (
   <Container>{text}</Container>
 );
 
