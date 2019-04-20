@@ -26,7 +26,7 @@ const File = styled.div`
   position: absolute;
   top: 0;
   opacity: ${(props: mytheme) => (props.showing ? 1 : 0)};
-  background-image: url(${(props: mytheme) => props.src}});
+  background-image: url(${(props: mytheme) => props.src});
   transition: opacity 0.5s linear;
 `;
 const Files = styled.div`

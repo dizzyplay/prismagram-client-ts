@@ -33,7 +33,6 @@ export function UserCard({ id, username, url, isSelf, isFollowing }: Props) {
   return (
     <Card>
       <EAvatar size={"md"} url={url} />
-      {id}
       <ELink to={`/${username}`}>
         <FatText text={username} />
       </ELink>
