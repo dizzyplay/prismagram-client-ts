@@ -6,7 +6,6 @@ import styled from "styled-components";
 import { mytheme } from "../../Styles/Theme";
 import FatText from "../FatText";
 import { HeartEmpty, HeartFull, Comment } from "../Icons";
-import Helmet from "react-helmet";
 import { TextareaAutosize } from "react-autosize-textarea/lib/TextareaAutosize";
 import { dateParser } from "../../utils";
 

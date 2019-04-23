@@ -11,6 +11,8 @@ export interface PostType {
     id: string;
     avatar: string;
     username: string;
+    isSelf: boolean;
+    isFollowing: boolean;
   };
   files: { id: string; url: string }[];
   likesCount: number;
@@ -20,7 +22,7 @@ export interface PostType {
   comments: {
     id: string;
     text: string;
-    user: { id: string; username: string };
+    user: { id: string; username: string; avatar:string };
   }[];
   createdAt: string;
   [key: string]: any;

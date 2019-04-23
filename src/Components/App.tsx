@@ -10,7 +10,6 @@ import Footer from "./Footer";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Header from "./Header";
 import { HashRouter } from "react-router-dom";
 
 const Query = gql`
@@ -26,6 +25,7 @@ const Wrapper = styled.div`
   max-width: 935px;
   width: 100%;
 `;
+
 
 const App = () => {
   const { data } = useQuery(Query);
@@ -50,3 +50,4 @@ const App = () => {
 };
 
 export default App;
+

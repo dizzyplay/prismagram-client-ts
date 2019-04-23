@@ -56,6 +56,7 @@ export const SearchPresenter = ({ loading, data }: Props) => {
             {data.searchPost.map((post: any, idx: number) => (
               <SquarePost
                 key={idx}
+                id={post.id}
                 likesCount={post.likesCount}
                 commentsCount={post.commentsCount}
                 url={post.files[0].url}

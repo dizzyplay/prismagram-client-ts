@@ -22,8 +22,8 @@ interface AvatarType {
 }
 
 const Container = styled.div`
-  ${(props: AvatarType) => getSize(props.size)}
-  background-image:url(${(props: AvatarType) => props.url});
+  ${(props: AvatarType) => getSize(props.size)};
+  background-image: url(${(props: AvatarType) => props.url});
   background-size:cover;
   border-radius:50%;
   `;

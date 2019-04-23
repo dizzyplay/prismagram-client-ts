@@ -1,4 +1,4 @@
-import React, { FormEvent } from "react";
+import React, { FormEvent, useEffect } from "react";
 // @ts-ignore
 import styled from "styled-components";
 import { Link, withRouter } from "react-router-dom";
@@ -82,6 +82,7 @@ export default withRouter(({ history }) => {
     e.preventDefault();
     history.push(`/search?term=${search.value}`);
   };
+
   return (
     <Header>
       <HeaderWrapper>

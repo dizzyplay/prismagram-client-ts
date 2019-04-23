@@ -2,6 +2,8 @@ import * as React from "react";
 import styled from "styled-components";
 import { mytheme } from "../Styles/Theme";
 import { HeartFull, Comment } from "./Icons";
+import ModalPost from "../Components/ModalPost";
+import { useState } from "react";
 
 const Overlay = styled.div`
   background-color: rgba(0, 0, 0, 0.6);
@@ -11,7 +13,7 @@ const Overlay = styled.div`
   justify-content: center;
   align-items: center;
   opacity: 0;
-  transition: opacity 0.3s linear;
+  transition: opacity 0.1s linear;
   svg {
     fill: white;
   }
@@ -45,12 +47,21 @@ type Props = {
   likesCount: number;
   commentsCount: number;
   url: string;
+  id: string;
 };
 
 export const SquarePost = (props: Props) => {
+  const [modal, setModal] = useState(false)
+  const modalOpen=()=>{
+    setModal(true)
+  }
+  const modalClose=()=>{
+    setModal(false)
+  }
   return (
     <Container bg={props.url}>
-      <Overlay>
+      {modal ? <ModalPost id={props.id} modalClose={modalClose} /> : null}
+      <Overlay onClick={modalOpen}>
         <Number>
           <HeartFull />
           <NumberText>{props.likesCount}</NumberText>

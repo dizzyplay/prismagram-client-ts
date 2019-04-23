@@ -6,9 +6,10 @@ import { FOLLOW_USER, UNFOLLOW_USER } from "./FollowButtonQueries";
 type Props = {
   isFollowing: boolean;
   id: string;
+  isText: boolean;
 };
 
-export default ({ isFollowing, id }: Props) => {
+export default ({ isFollowing, id, isText }: Props) => {
   const followUserMutation = useMutation(FOLLOW_USER);
   const unfollowUserMutation = useMutation(UNFOLLOW_USER);
   const [isFollow, setIsFollow] = useState(isFollowing);
@@ -24,10 +25,11 @@ export default ({ isFollowing, id }: Props) => {
     }
   };
   return (
-    <FollowButtonPresenter
-      isFollowing={isFollow}
-      handleFollow={handleFollow}
-      id={id}
-    />
+        <FollowButtonPresenter
+          isFollowing={isFollow}
+          handleFollow={handleFollow}
+          id={id}
+          isText={isText}
+        />
   );
 };
