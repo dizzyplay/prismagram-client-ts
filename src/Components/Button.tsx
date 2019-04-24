@@ -11,13 +11,14 @@ const Container = styled.button`
   font-weight: 600;
   background-color: ${(props: mytheme) => props.theme.blueColor};
   text-align: center;
-  padding: 7px 0px;
+  padding: 5px 10px;
   font-size: 14px;
   outline: none;
+  cursor: pointer;
 `;
 
-const Button: ({ text }: any) => any = ({ text }) => (
-  <Container>{text}</Container>
+const Button = ({ text, onClick }: any) => (
+  <Container onClick={onClick}>{text}</Container>
 );
 
 export default Button;

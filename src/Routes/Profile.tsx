@@ -1,6 +1,8 @@
 import * as React from "react";
+import { UserProfile } from "../Components/UserProfile";
+import { withRouter } from "react-router";
 
-const Profile = () => {
-  return <div>profile</div>;
+const Profile = ({ match }: any) => {
+  return <UserProfile match={match} />;
 };
-export default Profile;
+export default withRouter(Profile);

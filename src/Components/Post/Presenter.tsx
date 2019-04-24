@@ -8,12 +8,16 @@ import FatText from "../FatText";
 import { HeartEmpty, HeartFull, Comment } from "../Icons";
 import { TextareaAutosize } from "react-autosize-textarea/lib/TextareaAutosize";
 import { dateParser } from "../../utils";
+import { Link } from "react-router-dom";
 
 const Post = styled.div`
   ${(props: mytheme) => props.theme.whiteBox};
   width: 100%;
   max-width: 600px;
   margin-bottom: 25px;
+  a {
+    color: inherit;
+  }
 `;
 
 const File = styled.div`
@@ -124,7 +128,9 @@ export default ({
     <Header>
       <Avatar size={"sm"} url={user.avatar} />
       <UserColumn>
-        <FatText text={user.username} />
+        <Link to={`/${user.username}`}>
+          <FatText text={user.username} />
+        </Link>
         <Location>{location}</Location>
       </UserColumn>
     </Header>
