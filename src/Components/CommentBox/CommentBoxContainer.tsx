@@ -15,18 +15,20 @@ export default (props: Props) => {
   const addCommentMutation = useMutation(ADD_COMMENT);
   const handleKeyPress = async (e: any) => {
     console.log(e.charCode);
-    if (e.charCode === 13) {
+    if (e.charCode === 13 || e.type === "click") {
       e.preventDefault();
-      try {
-        const {
-          data: { addComment }
-        } = await addCommentMutation({
-          variables: { postId, text: newComment.value }
-        });
-        setSelfComment([...selfComments, addComment]);
-        newComment.setValue("");
-      } catch (e) {
-        console.log(e);
+      if (newComment.value !== "") {
+        try {
+          const {
+            data: { addComment }
+          } = await addCommentMutation({
+            variables: { postId, text: newComment.value }
+          });
+          setSelfComment([...selfComments, addComment]);
+          newComment.setValue("");
+        } catch (e) {
+          console.log(e);
+        }
       }
     }
   };

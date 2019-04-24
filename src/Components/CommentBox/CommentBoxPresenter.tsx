@@ -32,11 +32,23 @@ export default (props: Props) => {
           placeholder={"댓글달기..."}
           onKeyPress={handleKeyPress}
         />
-        <span onClick={handleKeyPress}>게시</span>
+        <TextLink
+          onClick={handleKeyPress}
+          enabled={newComment.value.length > 0}
+        >
+          게시
+        </TextLink>
       </ReplyBox>
     </Container>
   );
 };
+
+const TextLink = styled.div`
+  color: ${(props: mytheme) =>
+    props.enabled ? props.theme.blueColor : props.theme.darkGreyColor};
+  size: 14px;
+  cursor: pointer;
+`;
 const Comment = styled.div`
   display: flex;
   flex-direction: row;
