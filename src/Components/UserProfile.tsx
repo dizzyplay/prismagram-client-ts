@@ -61,7 +61,7 @@ export const UserProfile = ({ match }: any) => {
         <Loader />
       </Wrapper>
     );
-  } else {
+  } else if (data.getProfile && !loading) {
     const { user, posts } = data.getProfile;
     return (
       <Wrapper>
@@ -116,7 +116,7 @@ export const UserProfile = ({ match }: any) => {
         </>
       </Wrapper>
     );
-  }
+  } else return null;
 };
 
 export default withRouter(UserProfile);

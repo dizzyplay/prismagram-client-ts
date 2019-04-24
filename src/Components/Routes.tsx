@@ -1,5 +1,10 @@
 import * as React from "react";
-import { HashRouter as MyRouter, Route, Switch } from "react-router-dom";
+import {
+  HashRouter as MyRouter,
+  Redirect,
+  Route,
+  Switch
+} from "react-router-dom";
 import Auth from "../Routes/Auth/";
 import Feed from "../Routes/Feed";
 import Explore from "../Routes/Explore";
@@ -19,6 +24,7 @@ const LoggedInRoutes = () => (
       <Route path={"/explore"} component={Explore} />
       <Route path={"/search"} component={Search} />
       <Route path={"/:username"} component={Profile} />
+      <Redirect from={"*"} to={"/"} />
     </Switch>
   </>
 );
@@ -26,6 +32,7 @@ const LoggedInRoutes = () => (
 const LoggedOutRoutes = () => (
   <Switch>
     <Route exact path={"/"} component={Auth} />
+    <Redirect from={"*"} to={"/"} />
   </Switch>
 );
 
