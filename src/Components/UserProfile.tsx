@@ -9,6 +9,7 @@ import FollowButton from "../Components/FollowButton";
 import Button from "../Components/Button";
 import FatText from "./FatText";
 import { SquarePost } from "./SquarePost";
+import { Helmet } from "react-helmet";
 
 const GET_USER_PROFILE = gql`
   query getProfile($username: String!) {
@@ -65,6 +66,9 @@ export const UserProfile = ({ match }: any) => {
     return (
       <Wrapper>
         <>
+          <Helmet>
+            <title>{user.username} | bingstagram </title>
+          </Helmet>
           <Header>
             <div>
               <Avatar size={"lg"} url={user.avatar} />
