@@ -8,8 +8,8 @@ import Presenter from "./ModalPostPresenter";
 import { ADD_COMMENT } from "../Post/Queries";
 
 const SEE_FULL_FEED = gql`
-  query ($id:String!){
-    seeFullPost(id:$id){
+  query($id: String!) {
+    seeFullPost(id: $id) {
       id
       location
       caption
@@ -42,12 +42,12 @@ const SEE_FULL_FEED = gql`
 
 const Modal = styled.div`
   position: fixed;
-  z-index:2;
-  top:0;
+  z-index: 2;
+  top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.75);
+  background: rgba(0, 0, 0, 0.75);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -56,21 +56,20 @@ const Modal = styled.div`
 type Props = {
   id: string;
   modalClose: () => void;
-}
+};
 
 const ModalPostContainer = (props: Props) => {
-  const { data: { seeFullPost }, loading }: any = useQuery(SEE_FULL_FEED, { variables: { id: props.id } });
-  const [comments, setComments] = useState([])
-  const addCommentMutation = useMutation(ADD_COMMENT);
-  const newComment = useFormInput("")
-  const handleComment=async ()=>{
-    const {data} =await addCommentMutation({variables:{postId:props.id, text:newComment.value}})
-    setComments(data.seeFullPost.comments)
-  }
+  const {
+    data: { seeFullPost },
+    loading
+  }: any = useQuery(SEE_FULL_FEED, { variables: { id: props.id } });
+
   return (
     <ModalPortal>
       <Modal onClick={props.modalClose}>
-        {loading ? <Loader/> :
+        {loading ? (
+          <Loader />
+        ) : (
           <Presenter
             id={seeFullPost.id}
             user={seeFullPost.user}
@@ -82,27 +81,12 @@ const ModalPostContainer = (props: Props) => {
             comments={seeFullPost.comments}
             createdAt={seeFullPost.createdAt}
             modalClose={props.modalClose}
-            newComment={newComment}
-            handleComment={handleComment}
-          />}
+          />
+        )}
       </Modal>
     </ModalPortal>
   );
 };
-
-const useFormInput = (v:string)=>{
-  const [value, setValue] = useState(v)
-  const handleChange= (e:any)=>{
-    setValue(e.target.value)
-  };
-  const keyPress = (e:any)=>{
-    const {charCode} = e;
-    if(charCode==='13'){
-      console.log('endter')
-    }
-  }
-  return {value, onChange:handleChange, keyPress}
-}
 
 const ModalPortal = ({ children }: any) => {
   const el: any = document.getElementById("modal");

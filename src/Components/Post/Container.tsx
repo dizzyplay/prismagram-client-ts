@@ -22,7 +22,7 @@ export interface PostType {
   comments: {
     id: string;
     text: string;
-    user: { id: string; username: string; avatar:string };
+    user: { id: string; username: string; avatar: string };
   }[];
   createdAt: string;
   [key: string]: any;

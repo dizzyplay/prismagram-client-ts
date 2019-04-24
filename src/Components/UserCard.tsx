@@ -37,7 +37,9 @@ export function UserCard({ id, username, url, isSelf, isFollowing }: Props) {
       <ELink to={`/${username}`}>
         <FatText text={username} />
       </ELink>
-      {!isSelf && <FollowButton isFollowing={isFollowing} id={id} isText={false} />}
+      {!isSelf && (
+        <FollowButton isFollowing={isFollowing} id={id} isText={false} />
+      )}
     </Card>
   );
 }

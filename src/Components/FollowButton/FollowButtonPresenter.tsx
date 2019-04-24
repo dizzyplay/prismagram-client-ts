@@ -15,23 +15,23 @@ type Props = {
   isText: boolean;
 };
 
-const BlueText =styled(FatText)`
-  color: ${(props:mytheme)=>props.theme.blueColor};
+const BlueText = styled(FatText)`
+  color: ${(props: mytheme) => props.theme.blueColor};
   cursor: pointer;
-`
+`;
 
 export const FollowButtonPresenter = (props: Props) => {
   return (
     <>
-    {props.isText ?
-        <span onClick={()=>props.handleFollow(props.id)}>
-          <BlueText text={props.isFollowing ? "언팔로우":"팔로우"}/>
+      {props.isText ? (
+        <span onClick={() => props.handleFollow(props.id)}>
+          <BlueText text={props.isFollowing ? "언팔로우" : "팔로우"} />
         </span>
-        :
+      ) : (
         <CLINK onClick={() => props.handleFollow(props.id)}>
           <Button text={props.isFollowing ? "언팔로우" : "팔로우"} />
         </CLINK>
-    }
+      )}
     </>
   );
 };

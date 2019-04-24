@@ -1,3 +1,3 @@
-import ModalPostContainer from "./ModalPostContainer"
+import ModalPostContainer from "./ModalPostContainer";
 
-export default ModalPostContainer
+export default ModalPostContainer;

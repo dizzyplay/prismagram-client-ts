@@ -26,7 +26,6 @@ const Wrapper = styled.div`
   width: 100%;
 `;
 
-
 const App = () => {
   const { data } = useQuery(Query);
   const isLoggedIn = data.isLoggedIn;
@@ -50,4 +49,3 @@ const App = () => {
 };
 
 export default App;
-

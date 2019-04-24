@@ -25,11 +25,11 @@ export default ({ isFollowing, id, isText }: Props) => {
     }
   };
   return (
-        <FollowButtonPresenter
-          isFollowing={isFollow}
-          handleFollow={handleFollow}
-          id={id}
-          isText={isText}
-        />
+    <FollowButtonPresenter
+      isFollowing={isFollow}
+      handleFollow={handleFollow}
+      id={id}
+      isText={isText}
+    />
   );
 };

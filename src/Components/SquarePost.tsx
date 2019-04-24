@@ -51,13 +51,13 @@ type Props = {
 };
 
 export const SquarePost = (props: Props) => {
-  const [modal, setModal] = useState(false)
-  const modalOpen=()=>{
-    setModal(true)
-  }
-  const modalClose=()=>{
-    setModal(false)
-  }
+  const [modal, setModal] = useState(false);
+  const modalOpen = () => {
+    setModal(true);
+  };
+  const modalClose = () => {
+    setModal(false);
+  };
   return (
     <Container bg={props.url}>
       {modal ? <ModalPost id={props.id} modalClose={modalClose} /> : null}
