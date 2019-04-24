@@ -14,7 +14,6 @@ export default (props: Props) => {
   const newComment = useFormInput("");
   const addCommentMutation = useMutation(ADD_COMMENT);
   const handleKeyPress = async (e: any) => {
-    console.log(e.charCode);
     if (e.charCode === 13 || e.type === "click") {
       e.preventDefault();
       if (newComment.value !== "") {
